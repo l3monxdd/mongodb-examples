@@ -13,12 +13,9 @@ public interface UsersService {
 
     void update(Users users);
 
-//    Users findBy_id(ObjectId _id);
+    Users findBy_id(ObjectId objectId);
 
     List<Users> findAll();
-
-
-
 
 
 }
