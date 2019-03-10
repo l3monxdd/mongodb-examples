@@ -16,10 +16,6 @@ public class UsersController {
     @Autowired
     private UsersService usersService;
 
-    @Autowired
-    private UserRepository userRepository;
-
-
     @GetMapping("/all")
     public List<Users> getAll() {
         return usersService.findAll();
@@ -33,7 +29,12 @@ public class UsersController {
 
     @DeleteMapping("{id}")
     public void deleteUser(@PathVariable ObjectId id) {
-        usersService.delete(userRepository.findBy_id(id));
+        usersService.delete(usersService.findBy_id(id));
+    }
+
+    @GetMapping("{objectId}")
+    public Users findUser(@PathVariable ObjectId objectId) {
+        return usersService.findBy_id(objectId);
     }
 
 
