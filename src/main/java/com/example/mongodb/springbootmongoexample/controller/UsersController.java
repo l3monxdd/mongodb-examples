@@ -37,5 +37,17 @@ public class UsersController {
         return usersService.findBy_id(objectId);
     }
 
+    @PutMapping()
+    public Users updateUser(@RequestBody Users users){
+        ObjectId objectId = new ObjectId(users.get_id());
+        Users userFromDB = usersService.findBy_id(objectId);
+        userFromDB.setFirstName(users.getFirstName());
+        userFromDB.setLastName(users.getLastName());
+        userFromDB.setAge(users.getAge());
+        userFromDB.setPwd(users.getPwd());
+        usersService.update(userFromDB);
+        return userFromDB;
+    }
+
 
 }
