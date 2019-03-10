@@ -20,18 +20,13 @@ public class UsersServiceImpl implements UsersService {
     }
 
     @Override
-    public void delete(int id) {
-        userRepository.deleteById(id);
+    public void delete(Users users) {
+        userRepository.delete(users);
     }
 
     @Override
     public void update(Users users) {
         userRepository.save(users);
-    }
-
-    @Override
-    public Users findOne(int id) {
-        return userRepository.findById(id).get();
     }
 
     @Override
